@@ -10,19 +10,19 @@ This is very much still a work in progress.
 
 ### Included in the solution
 
-- [] Monitor the system health and disk space
-- [] Edit the Emulation Station config file
-- [] Edit the RetroArch config file
-- [] Edit the autostart.sh script
-- [] View the Emulation Station log file
-- [] Manage your BIOS files
-- [] Manage your ROMS
-- [] Set to run the server automatically on start
-- [] Support file renaming
-- [] Support for manage splash screens
-- [] Support for sub directories
-- [] Support for Systems with multiple directories (Like Mame)
-- [] Support for moving/copying files
+- [ ] Monitor the system health and disk space
+- [ ] Edit the Emulation Station config file
+- [ ] Edit the RetroArch config file
+- [ ] Edit the autostart.sh script
+- [ ] View the Emulation Station log file
+- [ ] Manage your BIOS files
+- [ ] Manage your ROMS
+- [ ] Set to run the server automatically on start
+- [ ] Support file renaming
+- [ ] Support for manage splash screens
+- [ ] Support for sub directories
+- [ ] Support for Systems with multiple directories (Like Mame)
+- [ ] Support for moving/copying files
 
 ### Running Locally
 
