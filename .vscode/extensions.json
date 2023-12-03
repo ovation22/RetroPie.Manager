@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "formulahendry.dotnet-test-explorer",
+        "ms-azuretools.vscode-docker",
+        "hediet.vscode-drawio",
+        "DavidAnson.vscode-markdownlint",
+        "github.vscode-github-actions"
+    ]
+}

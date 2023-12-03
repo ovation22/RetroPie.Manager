@@ -1,0 +1,58 @@
+﻿@page "/"
+
+<PageTitle>RetroPie Manager</PageTitle>
+
+<FluentGrid>
+    <FluentGridItem xs="12" sm="6" md="4">
+        <FluentCard Height="150px;">
+            <FluentNavLink Href="gaming-systems">
+                <FluentLabel Typo="Typography.H2">
+                    <FluentIcon Value="@(new Icons.Regular.Size24.Games())" />
+                </FluentLabel>
+                <FluentLabel Typo="Typography.H4">Systems</FluentLabel>
+            </FluentNavLink>
+        </FluentCard>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="6" md="4">
+        <FluentCard Height="150px;">
+            <FluentNavLink Href="stats">
+                <FluentLabel Typo="Typography.H2">
+                    <FluentIcon Value="@(new Icons.Regular.Size24.DataHistogram())" />
+                </FluentLabel>
+                <FluentLabel Typo="Typography.H4">Stats</FluentLabel>
+            </FluentNavLink>
+        </FluentCard>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="12" md="4">
+        <FluentCard Height="150px;">
+            <FluentNavLink Underline="Underline.None" Href="logs">
+                <FluentLabel Typo="Typography.H2">
+                    <FluentIcon Value="@(new Icons.Regular.Size24.Notepad())" />
+                </FluentLabel>
+                <FluentLabel Typo="Typography.H4">Logs</FluentLabel>
+            </FluentNavLink>
+        </FluentCard>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="6">
+        <FluentGrid>
+            <FluentGridItem xs="12">
+                <FluentCard Height="195px;"></FluentCard>
+            </FluentGridItem>
+            <FluentGridItem xs="12">
+                <FluentCard Height="195px;"></FluentCard>
+            </FluentGridItem>
+        </FluentGrid>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="6">
+        <FluentCard Style="height: 100%"></FluentCard>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="6" md="4">
+        <FluentCard Style="height: 150px;"></FluentCard>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="6" md="4">
+        <FluentCard Style="height: 150px;"></FluentCard>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="12" md="4">
+        <FluentCard Style="height: 150px;"></FluentCard>
+    </FluentGridItem>
+</FluentGrid>

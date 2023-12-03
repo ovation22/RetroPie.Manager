@@ -1,0 +1,8 @@
+{
+    "dotnet-test-explorer.treeMode": "flat",
+    "dotnet-test-explorer.autoWatch": true,
+    "dotnet-test-explorer.runInParallel": true,
+    "cSpell.words": [
+        "Serilog"
+    ]
+}

@@ -1,0 +1,75 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --logger trx --results-directory "TestResults" --collect:"XPlat Code Coverage"
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1.6.0
+      if: always()
+      with:
+        name: Test Results
+        path: "**/TestResults/*.trx"                            
+        reporter: dotnet-trx
+        fail-on-error: true
+
+    - name: Setup .NET Core # Required to execute ReportGenerator
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.x
+        dotnet-quality: 'ga'
+    
+    - name: ReportGenerator
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.1.24
+      with:
+        reports: "**/TestResults/**/coverage.cobertura.xml"
+        targetdir: coveragereport
+        reporttypes: MarkdownSummaryGithub   
+        title: 'Code Coverage'
+        tag: '${{ github.run_number }}_${{ github.run_id }}'
+
+    - name: Add Coverage PR Comment
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: github.event_name == 'pull_request'
+      with:
+        recreate: true
+        path: coveragereport/*.md
+
+    - name: Code Coverage Summary
+      if: always()
+      run: cat coveragereport/*.md > $GITHUB_STEP_SUMMARY
+
+    - name: Benchmark
+      run: dotnet run --project ./tests/Api.Project.Template.Tests.Benchmark -c Release
+
+    - name: Benchmark Summary
+      if: always()
+      run: cat BenchmarkDotNet.Artifacts/results/*.md >> $GITHUB_STEP_SUMMARY
+      

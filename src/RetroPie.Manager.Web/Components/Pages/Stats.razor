@@ -1,0 +1,128 @@
+﻿@page "/stats"
+@attribute [StreamRendering]
+@using System.Diagnostics
+
+<PageTitle>Stats | RetroPie Manager</PageTitle>
+
+<FluentGrid Spacing="3" Justify="JustifyContent.Center">
+    @if (!_isLoaded)
+    {
+        <FluentProgressRing/>
+    }
+    else
+    {
+        <FluentGridItem xs="12" sm="12" md="6">
+            <FluentStack Orientation="Orientation.Vertical">
+                <FluentCard Style="padding: 10px;">
+                    <FluentLabel Typo="Typography.Header">
+                        <FluentStack Row="true">
+                            <FluentIcon Value="@(new Icons.Regular.Size20.HardDrive())"/>Disk Space
+                            <FluentSpacer/>
+                            <FluentBadge Disabled="true" Color="Color.Neutral">Available: 42.73%</FluentBadge>
+                        </FluentStack>
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentSlider Min="0" Max="100" Step="10" Value="57" ReadOnly="true">
+                        <FluentSliderLabel Position="57">57%</FluentSliderLabel>
+                    </FluentSlider>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentLabel Typo="Typography.Body">
+                        <b>Free Space:</b> 13.7 GB
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentLabel Typo="Typography.Body">
+                        <b>Total Space:</b> 29.2 GB
+                    </FluentLabel>
+                </FluentCard>
+
+                <FluentCard Style="padding: 10px;">
+                    <FluentLabel Typo="Typography.Header">
+                        <FluentStack Row="true">
+                            <FluentIcon Value="@(new Icons.Regular.Size20.TopSpeed())"/>Memory
+                            <FluentSpacer/>
+                            <FluentBadge Disabled="true" Color="Color.Neutral">Available: 67%</FluentBadge>
+                        </FluentStack>
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
+                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
+                    </FluentSlider>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentLabel Typo="Typography.Body">
+                        <b>Free Memory:</b> 492.6 MB
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentLabel Typo="Typography.Body">
+                        <b>Total Memory:</b> 735.2 GB
+                    </FluentLabel>
+                </FluentCard>
+            </FluentStack>
+        </FluentGridItem>
+        <FluentGridItem xs="12" sm="12" md="6">
+            <FluentStack Orientation="Orientation.Vertical">
+                <FluentCard Style="padding: 10px 10px 0 10px;">
+                    <FluentLabel Typo="Typography.Header">
+                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
+                        Overall CPU Usage
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
+                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
+                    </FluentSlider>
+                </FluentCard>
+                <FluentCard Style="padding: 10px 10px 0 10px;">
+                    <FluentLabel Typo="Typography.Subject">
+                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
+                        CPU 0 Usage
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
+                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
+                    </FluentSlider>
+                </FluentCard>
+                <FluentCard Style="padding: 10px 10px 0 10px;">
+                    <FluentLabel Typo="Typography.Subject">
+                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
+                        CPU 1 Usage
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
+                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
+                    </FluentSlider>
+                </FluentCard>
+                <FluentCard Style="padding: 10px 10px 0 10px;">
+                    <FluentLabel Typo="Typography.Subject">
+                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
+                        CPU 2 Usage
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
+                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
+                    </FluentSlider>
+                </FluentCard>
+                <FluentCard Style="padding: 10px 10px 0 10px;">
+                    <FluentLabel Typo="Typography.Subject">
+                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
+                        CPU 3 Usage
+                    </FluentLabel>
+                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
+                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
+                    </FluentSlider>
+                </FluentCard>
+            </FluentStack>
+        </FluentGridItem>
+    }
+</FluentGrid>
+
+@code {
+    private bool _isLoaded;
+
+    protected override async Task OnInitializedAsync()
+    {
+    // Simulate asynchronous loading to demonstrate streaming rendering
+        await Task.Delay(500);
+
+        _isLoaded = true;
+    }
+}

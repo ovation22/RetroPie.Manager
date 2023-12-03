@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroPie.Manager.Web", "src\RetroPie.Manager.Web\RetroPie.Manager.Web.csproj", "{2C405A34-C0AE-4BCB-B803-76B8F6CA8EE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroPie.Manager.Web.Client", "src\RetroPie.Manager.Web.Client\RetroPie.Manager.Web.Client.csproj", "{604FC0A6-4684-4473-8EA5-09C03EC31852}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C405A34-C0AE-4BCB-B803-76B8F6CA8EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C405A34-C0AE-4BCB-B803-76B8F6CA8EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C405A34-C0AE-4BCB-B803-76B8F6CA8EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C405A34-C0AE-4BCB-B803-76B8F6CA8EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{604FC0A6-4684-4473-8EA5-09C03EC31852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{604FC0A6-4684-4473-8EA5-09C03EC31852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{604FC0A6-4684-4473-8EA5-09C03EC31852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{604FC0A6-4684-4473-8EA5-09C03EC31852}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C49E832-90E9-4078-990A-E0E3FE10470B}
+	EndGlobalSection
+EndGlobal
