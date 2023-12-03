@@ -1,6 +1,6 @@
 # A RetroPie Manager Project in Blazor
 
-[![.NET](https://github.com/ovation22/RetroPie.Manager/.github/workflows/dotnet.yml/badge.svg)](https://github.com/ovation22/RetroPie.Manager/.github/workflows/dotnet.yml)
+[![.NET](https://github.com/ovation22/RetroPie.Manager/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ovation22/RetroPie.Manager/actions/workflows/dotnet.yml)
 
 Yet another RetroPie Manager project. The intention of this project is to allow for the remote management of RetroPie files in a web-based interface.
 
