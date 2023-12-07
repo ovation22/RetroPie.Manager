@@ -1,3 +1,4 @@
+﻿using System.Runtime.InteropServices;
 using Microsoft.FluentUI.AspNetCore.Components;
 using RetroPie.Manager.Web.Client.Layout;
 using RetroPie.Manager.Web.Components;
@@ -14,6 +15,15 @@ builder.Services.AddRazorComponents()
 builder.Services.AddFluentUIComponents();
 
 builder.Services.AddScoped<IGamingSystemService, GamingSystemService>();
+
+if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+{
+    builder.Services.AddScoped<ICpuService, CpuWindowsService>();
+}
+if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+{
+    builder.Services.AddScoped<ICpuService, CpuLinuxService>();
+}
 
 var app = builder.Build();
 
