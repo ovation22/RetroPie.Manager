@@ -1,6 +1,8 @@
 ﻿@page "/stats"
+@using RetroPie.Manager.Web.Interfaces
+@using RetroPie.Manager.Web.Models.DTOs
+@inject ICpuService CpuService
 @attribute [StreamRendering]
-@using System.Diagnostics
 
 <PageTitle>Stats | RetroPie Manager</PageTitle>
 
@@ -60,56 +62,30 @@
         </FluentGridItem>
         <FluentGridItem xs="12" sm="12" md="6">
             <FluentStack Orientation="Orientation.Vertical">
-                <FluentCard Style="padding: 10px 10px 0 10px;">
+                <FluentCard Style="padding: 10px 10px 20px 10px;">
                     <FluentLabel Typo="Typography.Header">
                         <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
                         Overall CPU Usage
                     </FluentLabel>
                     <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
-                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
-                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
+                    <FluentSlider Min="0" Max="100" Step="10" Value="@_cpuStats.OverallCpuUsage" ReadOnly="true">
+                        <FluentSliderLabel Position="@_cpuStats.OverallCpuUsage">@_cpuStats.OverallCpuUsage.ToString("F2")%</FluentSliderLabel>
                     </FluentSlider>
                 </FluentCard>
-                <FluentCard Style="padding: 10px 10px 0 10px;">
-                    <FluentLabel Typo="Typography.Subject">
-                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
-                        CPU 0 Usage
-                    </FluentLabel>
-                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
-                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
-                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
-                    </FluentSlider>
-                </FluentCard>
-                <FluentCard Style="padding: 10px 10px 0 10px;">
-                    <FluentLabel Typo="Typography.Subject">
-                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
-                        CPU 1 Usage
-                    </FluentLabel>
-                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
-                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
-                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
-                    </FluentSlider>
-                </FluentCard>
-                <FluentCard Style="padding: 10px 10px 0 10px;">
-                    <FluentLabel Typo="Typography.Subject">
-                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
-                        CPU 2 Usage
-                    </FluentLabel>
-                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
-                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
-                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
-                    </FluentSlider>
-                </FluentCard>
-                <FluentCard Style="padding: 10px 10px 0 10px;">
-                    <FluentLabel Typo="Typography.Subject">
-                        <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
-                        CPU 3 Usage
-                    </FluentLabel>
-                    <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
-                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
-                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
-                    </FluentSlider>
-                </FluentCard>
+
+                @foreach (var core in _cpuStats.CoreUsages)
+                {
+                    <FluentCard Style="padding: 10px 10px 20px 10px;">
+                        <FluentLabel Typo="Typography.Subject">
+                            <FluentIcon Value="@(new Icons.Regular.Size20.DeveloperBoard())"/>
+                            CPU @core.core Usage
+                        </FluentLabel>
+                        <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
+                        <FluentSlider Min="0" Max="100" Step="10" Value="@core.usage" ReadOnly="true">
+                            <FluentSliderLabel Position="@core.usage">@core.usage.ToString("F2")%</FluentSliderLabel>
+                        </FluentSlider>
+                    </FluentCard>
+                }
             </FluentStack>
         </FluentGridItem>
     }
@@ -117,12 +93,15 @@
 
 @code {
     private bool _isLoaded;
+    private CpuStats _cpuStats = default!;
 
     protected override async Task OnInitializedAsync()
     {
-    // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
+        await Task.Delay(1);
+
+        _cpuStats = await CpuService.GetCpuStats();
 
         _isLoaded = true;
     }
+
 }
