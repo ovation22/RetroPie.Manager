@@ -20,6 +20,7 @@ if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 {
     builder.Services.AddScoped<ICpuService, CpuWindowsService>();
     builder.Services.AddScoped<IDiskSpaceService, DiskSpaceWindowsService>();
+    builder.Services.AddScoped<IMemoryUsageService, MemoryUsageWindowsService>();
 }
 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
 {

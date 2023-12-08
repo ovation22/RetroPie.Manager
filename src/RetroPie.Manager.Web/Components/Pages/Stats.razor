@@ -3,6 +3,7 @@
 @using RetroPie.Manager.Web.Models.DTOs
 @inject ICpuService CpuService
 @inject IDiskSpaceService DiskSpaceService
+@inject IMemoryUsageService MemoryUsageService
 @attribute [StreamRendering]
 
 <PageTitle>Stats | RetroPie Manager</PageTitle>
@@ -43,20 +44,20 @@
                         <FluentStack Row="true">
                             <FluentIcon Value="@(new Icons.Regular.Size20.TopSpeed())"/>Memory
                             <FluentSpacer/>
-                            <FluentBadge Disabled="true" Color="Color.Neutral">Available: 67%</FluentBadge>
+                            <FluentBadge Disabled="true" Color="Color.Neutral">Available: @_memoryUsage.AvailableMemoryPercent.ToString("F")%</FluentBadge>
                         </FluentStack>
                     </FluentLabel>
                     <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
-                    <FluentSlider Min="0" Max="100" Step="10" Value="33" ReadOnly="true">
-                        <FluentSliderLabel Position="33">33%</FluentSliderLabel>
+                        <FluentSlider Min="0" Max="100" Step="10" Value="@_memoryUsage.OverallUsagePercent" ReadOnly="true">
+                            <FluentSliderLabel Position="@_memoryUsage.OverallUsagePercent">@_memoryUsage.OverallUsagePercent.ToString("F")%</FluentSliderLabel>
                     </FluentSlider>
                     <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
                     <FluentLabel Typo="Typography.Body">
-                        <b>Free Memory:</b> 492.6 MB
+                            <b>Free Memory:</b> @_memoryUsage.FreeMemory.ToString("F") GB
                     </FluentLabel>
                     <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
                     <FluentLabel Typo="Typography.Body">
-                        <b>Total Memory:</b> 735.2 GB
+                        <b>Total Memory:</b> @_memoryUsage.TotalMemory.ToString("F") GB
                     </FluentLabel>
                 </FluentCard>
             </FluentStack>
@@ -96,6 +97,7 @@
     private bool _isLoaded;
     private CpuStats _cpuStats = default!;
     private DiskSpace _diskSpace = default!;
+    private MemoryUsage _memoryUsage = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -103,6 +105,7 @@
 
         _cpuStats = await CpuService.GetCpuStats();
         _diskSpace = DiskSpaceService.GetDiskSpace();
+        _memoryUsage = MemoryUsageService.GetMemoryUsage();
 
         _isLoaded = true;
     }
