@@ -19,6 +19,7 @@ builder.Services.AddScoped<IGamingSystemService, GamingSystemService>();
 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 {
     builder.Services.AddScoped<ICpuService, CpuWindowsService>();
+    builder.Services.AddScoped<IDiskSpaceService, DiskSpaceWindowsService>();
 }
 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
 {
