@@ -1,6 +1,7 @@
 # A RetroPie Manager Project in Blazor
 
 [![.NET](https://github.com/ovation22/RetroPie.Manager/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ovation22/RetroPie.Manager/actions/workflows/dotnet.yml)
+![GitHub license](https://img.shields.io/github/license/hiulit/cross-compile-godot-raspberry-pi?style=flat-square)
 
 Yet another RetroPie Manager project. The intention of this project is to allow for the remote management of RetroPie files in a web-based interface.
 
