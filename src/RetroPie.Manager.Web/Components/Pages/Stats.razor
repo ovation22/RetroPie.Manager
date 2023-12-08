@@ -2,6 +2,7 @@
 @using RetroPie.Manager.Web.Interfaces
 @using RetroPie.Manager.Web.Models.DTOs
 @inject ICpuService CpuService
+@inject IDiskSpaceService DiskSpaceService
 @attribute [StreamRendering]
 
 <PageTitle>Stats | RetroPie Manager</PageTitle>
@@ -20,20 +21,20 @@
                         <FluentStack Row="true">
                             <FluentIcon Value="@(new Icons.Regular.Size20.HardDrive())"/>Disk Space
                             <FluentSpacer/>
-                            <FluentBadge Disabled="true" Color="Color.Neutral">Available: 42.73%</FluentBadge>
+                            <FluentBadge Disabled="true" Color="Color.Neutral">Available: @_diskSpace.AvailableSpacePercent.ToString("F")%</FluentBadge>
                         </FluentStack>
                     </FluentLabel>
                     <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
-                    <FluentSlider Min="0" Max="100" Step="10" Value="57" ReadOnly="true">
-                        <FluentSliderLabel Position="57">57%</FluentSliderLabel>
+                        <FluentSlider Min="0" Max="100" Step="10" Value="@_diskSpace.OverallUsagePercent" ReadOnly="true">
+                            <FluentSliderLabel Position="@_diskSpace.OverallUsagePercent">@_diskSpace.OverallUsagePercent.ToString("F")%</FluentSliderLabel>
                     </FluentSlider>
                     <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
                     <FluentLabel Typo="Typography.Body">
-                        <b>Free Space:</b> 13.7 GB
+                            <b>Free Space:</b> @_diskSpace.FreeSpace.ToString("F") GB
                     </FluentLabel>
                     <FluentDivider Style="width: 100%;" Orientation=Orientation.Horizontal Role="DividerRole.Separator"></FluentDivider>
                     <FluentLabel Typo="Typography.Body">
-                        <b>Total Space:</b> 29.2 GB
+                        <b>Total Space:</b> @_diskSpace.TotalSpace.ToString("F") GB
                     </FluentLabel>
                 </FluentCard>
 
@@ -94,12 +95,14 @@
 @code {
     private bool _isLoaded;
     private CpuStats _cpuStats = default!;
+    private DiskSpace _diskSpace = default!;
 
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(1);
 
         _cpuStats = await CpuService.GetCpuStats();
+        _diskSpace = DiskSpaceService.GetDiskSpace();
 
         _isLoaded = true;
     }
