@@ -41,25 +41,38 @@ This is very much still a work in progress.
 
 ### Installation
 
-1. Clone the Repository:
+1. Install .NET 8
+
+```bash
+wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet8pi/main/install.sh | sudo bash
+```
+
+2. Install git
+
+```bash
+sudo apt install git
+```
+
+3. Clone the Repository:
 
 ```bash
 git clone https://github.com/ovation22/RetroPie.Manager.git
 ```
 
-1. Navigate to the Project Directory:
+4. Navigate to the Project Directory:
 
 ```bash
 cd RetroPie.Manager
 ```
 
-1. Run the Application:
+5. Run the Application:
 
 ```bash
-dotnet run src/RetroPie.Manager.Web/RetroPie.Manager.Web.csproj
+dotnet run --project ./src/RetroPie.Manager.Web/RetroPie.Manager.Web.csproj --urls http://0.0.0.0:5000
 ``` 
 
-1. Access RetroPie Manager:
+5. Access RetroPie Manager:
+
 Open your web browser and navigate to http://your-pi-ip:5000, replacing your-pi-ip with the IP address of your Raspberry Pi.
 
 ## Links
