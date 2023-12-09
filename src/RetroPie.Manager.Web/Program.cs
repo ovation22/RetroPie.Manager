@@ -26,6 +26,7 @@ if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
 {
     builder.Services.AddScoped<ICpuService, CpuLinuxService>();
     builder.Services.AddScoped<IDiskSpaceService, DiskSpaceLinuxService>();
+    builder.Services.AddScoped<IMemoryUsageService, MemoryUsageLinuxService>();
 }
 
 var app = builder.Build();
