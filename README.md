@@ -3,15 +3,22 @@
 [![.NET](https://github.com/ovation22/RetroPie.Manager/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ovation22/RetroPie.Manager/actions/workflows/dotnet.yml)
 ![GitHub license](https://img.shields.io/github/license/hiulit/cross-compile-godot-raspberry-pi?style=flat-square)
 
-Yet another RetroPie Manager project. The intention of this project is to allow for the remote management of RetroPie files in a web-based interface.
+RetroPie Manager is a web-based interface for managing and configuring your RetroPie setup. This tool aims to simplify the management of games, controllers, and system settings for RetroPie users.
 
 This is very much still a work in progress.
 
-## Getting Started
+## Features
+
+- Web-Based Interface: Access RetroPie Manager through a web browser, making it convenient to manage your RetroPie setup from any device on your network.
+- Game Management: Easily add, remove, or organize your game collections directly from the web interface.
+- Controller Configuration: Configure and manage controllers, ensuring a seamless gaming experience.
+- System Settings: Access and modify RetroPie system settings without the need for a keyboard and mouse connected to your Raspberry Pi.
 
 ### Included in the solution
 
-- [ ] Monitor the system health and disk space
+- [x] Display CPU usage
+- [x] Display Disk usage
+- [x] Display Memory usage
 - [ ] Edit the Emulation Station config file
 - [ ] Edit the RetroArch config file
 - [ ] Edit the autostart.sh script
@@ -25,9 +32,35 @@ This is very much still a work in progress.
 - [ ] Support for Systems with multiple directories (Like Mame)
 - [ ] Support for moving/copying files
 
-### Running Locally
 
-### Deploying
+## Getting Started
+
+### Prerequisites
+
+- RetroPie installed on your Raspberry Pi or other device.
+
+### Installation
+
+1. Clone the Repository:
+
+```bash
+git clone https://github.com/ovation22/RetroPie.Manager.git
+```
+
+1. Navigate to the Project Directory:
+
+```bash
+cd RetroPie.Manager
+```
+
+1. Run the Application:
+
+```bash
+dotnet run src/RetroPie.Manager.Web/RetroPie.Manager.Web.csproj
+``` 
+
+1. Access RetroPie Manager:
+Open your web browser and navigate to http://your-pi-ip:5000, replacing your-pi-ip with the IP address of your Raspberry Pi.
 
 ## Links
 
@@ -49,3 +82,7 @@ Please read our [Contributing Guidelines](/.github/CONTRIBUTING.md)
 
 Any and all are welcome to contribute to this project.
 Please read our [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
+
+## Acknowledgments
+
+Special thanks to the [RetroPie](https://retropie.org.uk/) community for their support and contributions.
