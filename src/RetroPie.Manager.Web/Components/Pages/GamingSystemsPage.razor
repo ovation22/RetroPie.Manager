@@ -9,7 +9,7 @@
 @if (_systemList == null)
 {
     <FluentGrid Spacing="3" Justify="JustifyContent.Center">
-        <FluentProgressRing Color="Color.Primary" Indeterminate="true"/>
+        <FluentProgressRing />
     </FluentGrid>
 }
 else
@@ -18,10 +18,10 @@ else
         @foreach (var system in _systemList)
         {
             <FluentGridItem>
-                <FluentCard Style="min-width: 112px;">
+                <FluentCard Style="min-width: 112px; max-width:159px;">
                     <FluentIcon Value="@(Icon.FromImageUrl(system.Image))" Style="height: 81px; width: 125px;"/>
                     <FluentLabel Typo="Typography.H5">@system.Title</FluentLabel>
-                    <FluentAnchor Href="@($"/gaming-systems/{system.Name}")">Details</FluentAnchor>
+                    <FluentAnchor Appearance="Appearance.Accent" Href="@($"/gaming-systems/{system.Name}")">Details</FluentAnchor>
                 </FluentCard>
             </FluentGridItem>
         }
