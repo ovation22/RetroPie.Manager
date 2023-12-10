@@ -65,7 +65,7 @@ else
 
         _gamingSystem = await GamingSystemService.GetAsync(Name);
 
-        var directoryPath = $"{RetroPieSettings.Value.RomPath}{_gamingSystem!.Path}";
+        var directoryPath = Path.Join(RetroPieSettings.Value.RomPath, _gamingSystem!.Path);
 
         var romFiles = new List<RomFile>();
 
