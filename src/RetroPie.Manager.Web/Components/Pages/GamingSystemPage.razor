@@ -67,6 +67,8 @@ else
 
         var directoryPath = Path.Join(RetroPieSettings.Value.RomPath, _gamingSystem!.Path);
 
+        Console.WriteLine(directoryPath);
+
         var romFiles = new List<RomFile>();
 
         if (Directory.Exists(directoryPath))
@@ -89,6 +91,6 @@ else
             }
         }
 
-        _romFiles = romFiles.AsQueryable();
+        _romFiles = romFiles.AsQueryable().OrderBy(x => x.FileName);
     }
 }
