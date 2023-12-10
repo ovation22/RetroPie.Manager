@@ -1,8 +1,10 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Configuration;
+using System.Runtime.InteropServices;
 using Microsoft.FluentUI.AspNetCore.Components;
 using RetroPie.Manager.Web.Client.Layout;
 using RetroPie.Manager.Web.Components;
 using RetroPie.Manager.Web.Interfaces;
+using RetroPie.Manager.Web.Models.DTOs;
 using RetroPie.Manager.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,9 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddFluentUIComponents();
+
+builder.Services.Configure<RetroPieManagerSettings>(builder.Configuration.GetSection("RetroPie.Manager"));
+
 
 builder.Services.AddScoped<IGamingSystemService, GamingSystemService>();
 

@@ -4,7 +4,7 @@
     "title": "3do",
     "description": "3do",
     "image": "images/3do.png",
-    "path": "roms/3do",
+    "path": "3do",
     "extensions": [".iso"]
   },
   {
@@ -12,7 +12,7 @@
     "title": "Amiga",
     "description": "Amiga",
     "image": "images/amiga.png",
-    "path": "roms/amiga",
+    "path": "amiga",
     "extensions": [".adf"]
   },
   {
@@ -20,7 +20,7 @@
     "title": "Amstrad CPC",
     "description": "Amstrad CPC",
     "image": "images/amstrad.png",
-    "path": "roms/amstrad",
+    "path": "amstrad",
     "extensions": [".dsk", ".cpc"]
   },
   {
@@ -28,7 +28,7 @@
     "title": "Apple II",
     "description": "Apple II",
     "image": "images/appleII.png",
-    "path": "roms/apple2",
+    "path": "apple2",
     "extensions": [".dsk"]
   },
   {
@@ -36,7 +36,7 @@
     "title": "Atari 2600",
     "description": "Atari 2600",
     "image": "images/atari2600.png",
-    "path": "roms/atari2600",
+    "path": "atari2600",
     "extensions": [".bin", ".a26", ".rom"]
   },
   {
@@ -44,7 +44,7 @@
     "title": "Atari 5200, 8 bit",
     "description": "Atari 5200, 8 bit",
     "image": "images/atari5200.png",
-    "path": "roms/atari5200",
+    "path": "atari5200",
     "extensions": [".a52", ".bas", ".bin", ".xex", ".atr", ".xfd", ".dcm", ".atr.gz", ".xfd.gz"]
   },
   {
@@ -52,7 +52,7 @@
     "title": "Atari 7800",
     "description": "Atari 7800",
     "image": "images/atari7800.png",
-    "path": "roms/atari7800",
+    "path": "atari7800",
     "extensions": [".a78", ".bin"]
   },
   {
@@ -60,7 +60,7 @@
     "title": "Atari Jaguar",
     "description": "Atari Jaguar",
     "image": "images/atarijaguar.png",
-    "path": "roms/atarijaguar",
+    "path": "atarijaguar",
     "extensions": [".j64", ".jag"]
   },
   {
@@ -68,7 +68,7 @@
     "title": "Atari Lynx",
     "description": "Atari Lynx",
     "image": "images/atarilynx.png",
-    "path": "roms/atarilynx",
+    "path": "atarilynx",
     "extensions": [".lnx"]
   },
   {
@@ -76,7 +76,7 @@
     "title": "Atari ST, STE, TT, Falcon",
     "description": "Atari ST, STE, TT, Falcon",
     "image": "images/atarist.png",
-    "path": "roms/atarist",
+    "path": "atarist",
     "extensions": [".st", ".stx", ".img", ".rom", ".raw", ".ipf", ".ctr"]
   },
   {
@@ -84,7 +84,7 @@
     "title": "Color Computer",
     "description": "Color Computer",
     "image": "images/coco.png",
-    "path": "roms/coco",
+    "path": "coco",
     "extensions": [".cas", ".wav", ".bas", ".asc", ".dmk", ".jvc", ".os9", ".dsk", ".vdk", ".rom", ".ccc", ".sna"]
   },
   {
@@ -92,7 +92,7 @@
     "title": "Commodore 64",
     "description": "Commodore 64",
     "image": "images/c64.png",
-    "path": "roms/c64",
+    "path": "c64",
     "extensions": [".crt", ".d64", ".g64", ".t64", ".tap", ".x64"]
   },
   {
@@ -100,7 +100,7 @@
     "title": "Dragon 32",
     "description": "Dragon 32",
     "image": "images/dragon32.png",
-    "path": "roms/coco",
+    "path": "coco",
     "extensions": [".cas", ".wav", ".bas", ".asc", ".dmk", ".jvc", ".os9", ".dsk", ".vdk", ".rom", ".ccc", ".sna"]
   },
   {
@@ -108,7 +108,7 @@
     "title": "Dreamcast",
     "description": "Dreamcast",
     "image": "images/dreamcast.png",
-    "path": "roms/dreamcast",
+    "path": "dreamcast",
     "extensions": [".cdi", ".gdi"]
   },
   {
@@ -116,7 +116,7 @@
     "title": "Genesis/Megadrive",
     "description": "Genesis/Megadrive",
     "image": "images/genesis.png",
-    "path": "roms/megadrive",
+    "path": "megadrive",
     "extensions": [".smd", ".bin", ".md", ".iso"]
   },
   {
@@ -124,7 +124,7 @@
     "title": "Game Gear",
     "description": "Game Gear",
     "image": "images/gamegear.png",
-    "path": "roms/gamegear",
+    "path": "gamegear",
     "extensions": [".gg"]
   },
   {
@@ -132,7 +132,7 @@
     "title": "Game Boy",
     "description": "Game Boy",
     "image": "images/gameboy.png",
-    "path": "roms/gb",
+    "path": "gb",
     "extensions": [".gb"]
   },
   {
@@ -140,7 +140,7 @@
     "title": "Game Boy Color",
     "description": "Game Boy Color",
     "image": "images/gameboycolour.png",
-    "path": "roms/gbc",
+    "path": "gbc",
     "extensions": [".gbc"]
   },
   {
@@ -148,7 +148,7 @@
     "title": "Game Boy Advance",
     "description": "Game Boy Advance",
     "image": "images/gameboyadvance.png",
-    "path": "roms/gba",
+    "path": "gba",
     "extensions": [".gba"]
   },
   {
@@ -156,7 +156,7 @@
     "title": "Intellivision",
     "description": "Intellivision",
     "image": "images/intellivision.png",
-    "path": "roms/intellivision",
+    "path": "intellivision",
     "extensions": [".int", ".bin"]
   },
   {
@@ -164,7 +164,7 @@
     "title": "Macintosh",
     "description": "Macintosh",
     "image": "images/macintosh.png",
-    "path": "roms/macintosh",
+    "path": "macintosh",
     "extensions": [".img", ".rom"]
   },
   {
@@ -172,7 +172,7 @@
     "title": "MAME",
     "description": "MAME",
     "image": "images/mame.png",
-    "path": "roms/arcade",
+    "path": "arcade",
     "extensions": [".zip"]
   },
   {
@@ -180,7 +180,7 @@
     "title": "Master System",
     "description": "Master System",
     "image": "images/mastersystem.png",
-    "path": "roms/mastersystem",
+    "path": "mastersystem",
     "extensions": [".sms"]
   },
   {
@@ -188,7 +188,7 @@
     "title": "MSX",
     "description": "MSX",
     "image": "images/msx.png",
-    "path": "roms/msx",
+    "path": "msx",
     "extensions": [".rom", ".mx1", ".mx2", ".col", ".dsk"]
   },
   {
@@ -196,7 +196,7 @@
     "title": "Neo Geo",
     "description": "Neo Geo",
     "image": "images/neogeo.png",
-    "path": "roms/neogeo",
+    "path": "neogeo",
     "extensions": [".zip"]
   },
   {
@@ -204,7 +204,7 @@
     "title": "Neo Geo Pocket",
     "description": "Neo Geo Pocket",
     "image": "images/ngp.png",
-    "path": "roms/ngp",
+    "path": "ngp",
     "extensions": [".ngp"]
   },
   {
@@ -212,7 +212,7 @@
     "title": "Neo Geo Pocket Color",
     "description": "Neo Geo Pocket Color",
     "image": "images/ngp_black.png",
-    "path": "roms/ngpc",
+    "path": "ngpc",
     "extensions": [".ngc"]
   },
   {
@@ -220,7 +220,7 @@
     "title": "Nintendo 64",
     "description": "Nintendo 64",
     "image": "images/n64.png",
-    "path": "roms/n64",
+    "path": "n64",
     "extensions": [".z64", ".n64", ".v64"]
   },
   {
@@ -228,7 +228,7 @@
     "title": "Nintendo DS",
     "description": "Nintendo DS",
     "image": "images/nds.png",
-    "path": "roms/nds",
+    "path": "nds",
     "extensions": [".nds", ".bin"]
   },
   {
@@ -236,7 +236,7 @@
     "title": "Nintendo Entertainment System",
     "description": "Nintendo Entertainment System",
     "image": "images/nes.png",
-    "path": "roms/nes",
+    "path": "nes",
     "extensions": [".zip", ".nes", ".smc", ".sfc", ".fig", ".swc", ".mgd"]
   },
   {
@@ -244,7 +244,7 @@
     "title": "PC",
     "description": "PC",
     "image": "images/pc.png",
-    "path": "roms/pc",
+    "path": "pc",
     "extensions": [".com", ".sh", ".bat", ".exe"]
   },
   {
@@ -252,7 +252,7 @@
     "title": "PC Engine/TurboGrafx-16",
     "description": "PC Engine/TurboGrafx-16",
     "image": "images/pcengine.png",
-    "path": "roms/pcengine",
+    "path": "pcengine",
     "extensions": [".pce"]
   },
   {
@@ -260,7 +260,7 @@
     "title": "PlayStation 1",
     "description": "PlayStation 1",
     "image": "images/psx.png",
-    "path": "roms/psx",
+    "path": "psx",
     "extensions": [".bin", ".cue", ".img", ".mdf"]
   },
   {
@@ -268,7 +268,7 @@
     "title": "PSP",
     "description": "PSP",
     "image": "images/psp.png",
-    "path": "roms/psp",
+    "path": "psp",
     "extensions": [".bin", ".cue", ".cbn", ".img", ".iso", ".m3u", ".mdf", ".pbp", ".toc", ".z", ".znx"]
   },
   {
@@ -276,7 +276,7 @@
     "title": "SAM Coupé",
     "description": "SAM Coupé",
     "image": "images/samcoupe.png",
-    "path": "roms/samcoupe",
+    "path": "samcoupe",
     "extensions": [".dsk", ".mgt", ".sbt", ".sad"]
   },
   {
@@ -284,7 +284,7 @@
     "title": "Sega 32X",
     "description": "Sega 32X",
     "image": "images/sega32x.png",
-    "path": "roms/sega32x",
+    "path": "sega32x",
     "extensions": [".32x", ".smd", ".bin", ".md"]
   },
   {
@@ -292,7 +292,7 @@
     "title": "Sega CD",
     "description": "Sega CD",
     "image": "images/segacd.png",
-    "path": "roms/segacd",
+    "path": "segacd",
     "extensions": [".smd", ".bin", ".md", ".iso"]
   },
   {
@@ -300,7 +300,7 @@
     "title": "Sega SG-1000",
     "description": "Sega SG-1000",
     "image": "images/sg-1000.png",
-    "path": "roms/sg-1000",
+    "path": "sg-1000",
     "extensions": [".sg", ".zip"]
   },
   {
@@ -308,7 +308,7 @@
     "title": "Super Nintendo Entertainment System",
     "description": "Super Nintendo Entertainment System",
     "image": "images/snes.png",
-    "path": "roms/snes",
+    "path": "snes",
     "extensions": [".zip", ".smc", ".sfc", ".fig", ".swc"]
   },
   {
@@ -316,7 +316,7 @@
     "title": "Vectrex",
     "description": "Vectrex",
     "image": "images/vectrex.png",
-    "path": "roms/vectrex",
+    "path": "vectrex",
     "extensions": [".vec", ".gam", ".bin"]
   },
   {
@@ -324,7 +324,7 @@
     "title": "Videopac/Odyssey 2",
     "description": "Videopac/Odyssey 2",
     "image": "images/videopac.png",
-    "path": "roms/videopac",
+    "path": "videopac",
     "extensions": [".bin"]
   },
   {
@@ -332,7 +332,7 @@
     "title": "Virtual Boy",
     "description": "Virtual Boy",
     "image": "images/virtualboy.png",
-    "path": "roms/virtualboy",
+    "path": "virtualboy",
     "extensions": [".vb"]
   },
   {
@@ -340,7 +340,7 @@
     "title": "Wonderswan",
     "description": "Wonderswan",
     "image": "images/wonderswan.png",
-    "path": "roms/wonderswan",
+    "path": "wonderswan",
     "extensions": [".ws"]
   },
   {
@@ -348,7 +348,7 @@
     "title": "Wonderswan Color",
     "description": "Wonderswan Color",
     "image": "images/wonderswan-black.png",
-    "path": "roms/wonderswancolor",
+    "path": "wonderswancolor",
     "extensions": [".wsc"]
   },
   {
@@ -356,7 +356,7 @@
     "title": "ZX Spectrum",
     "description": "ZX Spectrum",
     "image": "images/zxspectrum.png",
-    "path": "roms/zxspectrum",
+    "path": "zxspectrum",
     "extensions": ["sna", ".szx", ".z80", ".tap", ".tzx", ".gz", ".udi", ".mgt", ".img", ".trd", ".scl", ".dsk"]
   }
 ]

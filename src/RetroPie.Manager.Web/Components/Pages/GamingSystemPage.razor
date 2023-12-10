@@ -1,24 +1,53 @@
 ﻿@page "/gaming-systems/{Name}"
 @using RetroPie.Manager.Web.Interfaces
 @using RetroPie.Manager.Web.Models.DTOs
+@using Microsoft.Extensions.Options
 @inject IGamingSystemService GamingSystemService
+@inject IOptions<RetroPieManagerSettings> RetroPieSettings
 @attribute [StreamRendering]
 
-<PageTitle>Gaming System | RetroPie Manager</PageTitle>
+<PageTitle>@Name | RetroPie Manager</PageTitle>
 
 
 @if (_gamingSystem == null)
 {
     <FluentGrid Spacing="3" Justify="JustifyContent.Center">
-        <FluentProgressRing Color="Color.Primary" Indeterminate="true" />
+        <FluentProgressRing/>
     </FluentGrid>
 }
 else
 {
+    <FluentBreadcrumb>
+        <FluentBreadcrumbItem Href="#">
+            Home
+            <FluentIcon Value="@(new Icons.Regular.Size16.ChevronDoubleRight())" Color="@Color.Neutral" Slot="separator" />
+        </FluentBreadcrumbItem>
+        <FluentBreadcrumbItem Href="gaming-systems">
+            Systems
+            <FluentIcon Value="@(new Icons.Regular.Size16.ChevronDoubleRight())" Color="@Color.Neutral" Slot="separator" />
+        </FluentBreadcrumbItem>
+        <FluentBreadcrumbItem>@_gamingSystem.Title</FluentBreadcrumbItem>
+    </FluentBreadcrumb>
+
     <h1>@_gamingSystem.Title</h1>
 
-    <FluentGrid Spacing="3" Justify="JustifyContent.Center">
-        Files in directory <FluentBadge>3</FluentBadge>
+    <FluentGrid>
+        <FluentGridItem xs="12" sm="6">
+            <FluentCard>
+                Files in directory <FluentBadge>@_romFiles.Count()</FluentBadge>
+
+                <FluentDataGrid Items="@_romFiles" ResizableColumns=true>
+                    <PropertyColumn Property="@(p => p.FileName)" Title="Name" />
+                    <PropertyColumn Property="@(p => p.FileSize)" Title="Size" />
+                    <PropertyColumn Property="@(p => p.CreationTime)" Title="Created" Format="yyyy-MM-dd HH:mm:ss" />
+                </FluentDataGrid>
+            </FluentCard>
+        </FluentGridItem>
+        <FluentGridItem xs="12" sm="6">
+            <FluentCard Style="height: 100%">
+                <FluentIcon Value="@(Icon.FromImageUrl(_gamingSystem.Image))" Style="height: 81px; width: 125px;"/>
+            </FluentCard>
+        </FluentGridItem>
     </FluentGrid>
 }
 
@@ -28,11 +57,38 @@ else
     public string Name { get; set; } = default!;
 
     private GamingSystem? _gamingSystem;
+    private IQueryable<RomFile> _romFiles = default!;
 
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(500);
+        await Task.Delay(1);
 
         _gamingSystem = await GamingSystemService.GetAsync(Name);
+
+        var directoryPath = $"{RetroPieSettings.Value.RomPath}{_gamingSystem!.Path}";
+
+        var romFiles = new List<RomFile>();
+
+        if (Directory.Exists(directoryPath))
+        {
+            var files = Directory.GetFiles(directoryPath);
+
+            foreach (var file in files)
+            {
+                var fileInfo = new FileInfo(file);
+                var romFile = new RomFile
+                {
+                    FileName = fileInfo.Name,
+                    FileSize = fileInfo.Length,
+                    CreationTime = fileInfo.CreationTime,
+                    LastAccessTime = fileInfo.LastAccessTime,
+                    LastWriteTime = fileInfo.LastWriteTime
+                };
+
+                romFiles.Add(romFile);
+            }
+        }
+
+        _romFiles = romFiles.AsQueryable();
     }
 }

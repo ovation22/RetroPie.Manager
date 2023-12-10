@@ -6,4 +6,5 @@ public class GamingSystem
     public string Title { get; set; } = default!;
     public string Description { get; set; } = default!;
     public string Image { get; set; } = default!;
+    public string Path { get; set; } = default!;
 }
