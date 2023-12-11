@@ -7,6 +7,18 @@ RetroPie Manager is a web-based interface for managing and configuring your Retr
 
 This is very much still a work in progress.
 
+## Screenshots
+
+![home](media\home.png)
+
+![systems](media\systems.png)
+
+![system](media\system.png)
+
+![stats](media\stats.png)
+
+![logs](media\logs.png)
+
 ## Features
 
 - Web-Based Interface: Access RetroPie Manager through a web browser, making it convenient to manage your RetroPie setup from any device on your network.
@@ -20,8 +32,8 @@ This is very much still a work in progress.
 - [x] Display Disk usage
 - [x] Display Memory usage
 - [x] View list of ROMs
-- [x] View the Emulation Station log file
-- [ ] Edit the Emulation Station config file
+- [x] View the EmulationStation log file
+- [ ] Edit the EmulationStation config file
 - [ ] Edit the RetroArch config file
 - [ ] Edit the autostart.sh script
 - [ ] Manage your BIOS files
@@ -32,7 +44,6 @@ This is very much still a work in progress.
 - [ ] Support for sub directories
 - [ ] Support for Systems with multiple directories (Like Mame)
 - [ ] Support for moving/copying files
-
 
 ## Getting Started
 
@@ -70,7 +81,7 @@ cd RetroPie.Manager
 
 ```bash
 dotnet run --project ./src/RetroPie.Manager.Web/RetroPie.Manager.Web.csproj --urls http://0.0.0.0:5000
-``` 
+```
 
 5. Access RetroPie Manager:
 
