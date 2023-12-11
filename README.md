@@ -9,15 +9,15 @@ This is very much still a work in progress.
 
 ## Screenshots
 
-![home](media\home.png)
+![home](media/home.png)
 
-![systems](media\systems.png)
+![systems](media/systems.png)
 
-![system](media\system.png)
+![system](media/system.png)
 
-![stats](media\stats.png)
+![stats](media/stats.png)
 
-![logs](media\logs.png)
+![logs](media/logs.png)
 
 ## Features
 
