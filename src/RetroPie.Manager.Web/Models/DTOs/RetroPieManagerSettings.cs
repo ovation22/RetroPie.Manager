@@ -2,5 +2,8 @@
 
 public class RetroPieManagerSettings
 {
-    public string RomPath { get; set; } = default!;
+    public string RomsPath { get; set; } = default!;
+    public string BiosPath { get; set; } = default!;
+    public string ConfigsPath { get; set; } = default!;
+    public string EmulationStationPath { get; set; } = default!;
 }

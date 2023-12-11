@@ -1,10 +1,71 @@
 ﻿@page "/logs"
+@using RetroPie.Manager.Web.Models.DTOs
+@using Microsoft.Extensions.Options
+@inject IOptions<RetroPieManagerSettings> RetroPieSettings
 @attribute [StreamRendering]
 
 <PageTitle>Logs | RetroPie Manager</PageTitle>
 
 <h1>Logs</h1>
 
-<FluentGrid>
-    Logs
-</FluentGrid>
+@if (!_isLoaded)
+{
+    <FluentGrid Spacing="3" Justify="JustifyContent.Center">
+        <FluentProgressRing/>
+    </FluentGrid>
+}
+else
+{
+
+    <FluentGrid>
+        <FluentGridItem xs="12" sm="8">
+            <FluentCard>
+                <pre>@_fileContent</pre>
+            </FluentCard>
+        </FluentGridItem>
+        <FluentGridItem xs="12" sm="4">
+            <FluentCard Style="height: 100%">
+                Log files:
+                <ul>
+                    @foreach (var file in _files)
+                    {
+                        <li>@file</li>
+                    }
+                </ul>
+            </FluentCard>
+        </FluentGridItem>
+    </FluentGrid>
+}
+
+@code
+{
+    private bool _isLoaded;
+    private string[]? _files;
+    private string? _fileContent;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1);
+
+        var directoryPath = RetroPieSettings.Value.EmulationStationPath;
+        const string fileName = "es_log.txt";
+        _fileContent = "";
+
+        if (Directory.Exists(directoryPath))
+        {
+            _files = Directory.GetFiles(directoryPath)
+                .Where(file => Path.GetFileName(file).Contains(fileName))
+                .ToArray();
+
+            var fullPath = Path.Combine(directoryPath, fileName);
+            if (_files.Contains(fullPath))
+            {
+                await using var stream = new FileStream(fullPath, FileMode.Open);
+                using var reader = new StreamReader(stream);
+                _fileContent = await reader.ReadToEndAsync();
+            }
+        }
+
+        _isLoaded = true;
+    }
+}
