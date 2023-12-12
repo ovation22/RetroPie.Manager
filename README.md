@@ -33,6 +33,7 @@ This is very much still a work in progress.
 - [x] Display Memory usage
 - [x] View list of ROMs
 - [x] View the EmulationStation log file
+- [x] Upload ROM
 - [ ] Edit the EmulationStation config file
 - [ ] Edit the RetroArch config file
 - [ ] Edit the autostart.sh script
