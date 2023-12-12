@@ -1,0 +1,102 @@
+﻿@using RetroPie.Manager.Web.Models.DTOs
+@using Microsoft.Extensions.Options
+@inject ILogger<FileUpload> Logger
+@inject IOptions<RetroPieManagerSettings> RetroPieSettings
+@rendermode InteractiveServer
+
+<p style="width: 100%;">
+    <label style="width: 100%;">
+        <FluentInputFile Id="my-file-uploader" 
+                         Multiple="true"
+                         MaximumFileCount="4"
+                         OnInputFileChange="@LoadFiles" 
+                         Style="height: 300px; border: 1px dashed var(--accent-fill-rest);">
+            <ChildContent>
+                <label for="my-file-uploader">
+                    <FluentIcon Value="@(new @Icons.Regular.Size24.ArrowUpload())" />
+                </label>
+
+                <div>
+                    Drag files here you wish to upload,
+                    or <label for="my-file-uploader">browse</label>
+                    for them<span style="color: red;">*</span>.
+                    <br />
+                    <em>Maximum of 4 files allowed.</em>
+                </div>
+            </ChildContent>
+        </FluentInputFile>
+    </label>
+</p>
+
+@if (_isLoading)
+{
+    <p>Progress: @($"{_progressPercent:P0}")</p>
+}
+else
+{
+    <ul>
+        @foreach (var file in _loadedFiles)
+        {
+            <li>
+                <ul>
+                    <li>Name: @file.Name</li>
+                    <li>Last modified: @file.LastModified.ToString()</li>
+                    <li>Size (bytes): @file.Size</li>
+                    <li>Content type: @file.ContentType</li>
+                </ul>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter]
+    public string Name { get; set; } = default!;
+
+    private List<IBrowserFile> _loadedFiles = new();
+    private int _maxAllowedFiles = 4;
+    private long _maxFileSize = 1024 * 10000;
+    private bool _isLoading;
+    private decimal _progressPercent;
+
+    private async Task LoadFiles(InputFileChangeEventArgs e)
+    {
+        _isLoading = true;
+        _loadedFiles.Clear();
+        _progressPercent = 0;
+
+        foreach (var file in e.GetMultipleFiles(_maxAllowedFiles))
+        {
+            try
+            {
+                var path = Path.Combine(RetroPieSettings.Value.RomsPath, Name, file.Name);
+
+                await using FileStream writeStream = new(path, FileMode.Create);
+                await using var readStream = file.OpenReadStream(_maxFileSize);
+                var bytesRead = 0;
+                var totalRead = 0;
+                var buffer = new byte[1024 * 10];
+
+                while ((bytesRead = await readStream.ReadAsync(buffer)) != 0)
+                {
+                    totalRead += bytesRead;
+
+                    await writeStream.WriteAsync(buffer, 0, bytesRead);
+
+                    _progressPercent = decimal.Divide(totalRead, file.Size);
+
+                    StateHasChanged();
+                }
+
+                _loadedFiles.Add(file);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError("File: {FileName} Error: {Error}",
+                    file.Name, ex.Message);
+            }
+        }
+
+        _isLoading = false;
+    }
+}

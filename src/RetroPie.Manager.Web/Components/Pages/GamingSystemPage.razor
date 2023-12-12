@@ -30,7 +30,7 @@ else
     </FluentBreadcrumb>
 
     <h1>@_gamingSystem.Title</h1>
-
+    
     <FluentGrid>
         <FluentGridItem xs="12" sm="6">
             <FluentCard>
@@ -46,6 +46,8 @@ else
         <FluentGridItem xs="12" sm="6">
             <FluentCard Style="height: 100%">
                 <FluentIcon Value="@(Icon.FromImageUrl(_gamingSystem.Image))" Style="height: 81px; width: 125px;"/>
+                <br />
+                <FileUpload Name="@Name"></FileUpload>
             </FluentCard>
         </FluentGridItem>
     </FluentGrid>
