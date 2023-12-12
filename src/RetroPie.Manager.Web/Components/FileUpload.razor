@@ -55,7 +55,6 @@ else
 
     private List<IBrowserFile> _loadedFiles = new();
     private int _maxAllowedFiles = 4;
-    private long _maxFileSize = 1024 * 10000;
     private bool _isLoading;
     private decimal _progressPercent;
 
@@ -72,7 +71,7 @@ else
                 var path = Path.Combine(RetroPieSettings.Value.RomsPath, Name, file.Name);
 
                 await using FileStream writeStream = new(path, FileMode.Create);
-                await using var readStream = file.OpenReadStream(_maxFileSize);
+                await using var readStream = file.OpenReadStream(long.MaxValue);
                 var bytesRead = 0;
                 var totalRead = 0;
                 var buffer = new byte[1024 * 10];
