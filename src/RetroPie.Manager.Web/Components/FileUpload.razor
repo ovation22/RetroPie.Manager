@@ -6,21 +6,21 @@
 
 <p style="width: 100%;">
     <label style="width: 100%;">
-        <FluentInputFile Id="my-file-uploader" 
+        <FluentInputFile Id="my-file-uploader"
                          Multiple="true"
                          MaximumFileCount="4"
-                         OnInputFileChange="@LoadFiles" 
-                         Style="height: 300px; border: 1px dashed var(--accent-fill-rest);">
+                         OnInputFileChange="@LoadFiles"
+                         Style="border: 1px dashed var(--accent-fill-rest); height: 300px;">
             <ChildContent>
                 <label for="my-file-uploader">
-                    <FluentIcon Value="@(new @Icons.Regular.Size24.ArrowUpload())" />
+                    <FluentIcon Value="@(new Icons.Regular.Size24.ArrowUpload())"/>
                 </label>
 
                 <div>
                     Drag files here you wish to upload,
                     or <label for="my-file-uploader">browse</label>
                     for them<span style="color: red;">*</span>.
-                    <br />
+                    <br/>
                     <em>Maximum of 4 files allowed.</em>
                 </div>
             </ChildContent>
@@ -37,25 +37,21 @@ else
     <ul>
         @foreach (var file in _loadedFiles)
         {
-            <li>
-                <ul>
-                    <li>Name: @file.Name</li>
-                    <li>Last modified: @file.LastModified.ToString()</li>
-                    <li>Size (bytes): @file.Size</li>
-                    <li>Content type: @file.ContentType</li>
-                </ul>
-            </li>
+            <li>Name: @file.Name</li>
+            <li>Last modified: @file.LastModified.ToString()</li>
+            <li>Size (bytes): @file.Size</li>
+            <li>Content type: @file.ContentType</li>
         }
     </ul>
 }
 
 @code {
+
     [Parameter]
     public string Name { get; set; } = default!;
 
     private List<IBrowserFile> _loadedFiles = new();
     private int _maxAllowedFiles = 4;
-    private long _maxFileSize = 1024 * 10000;
     private bool _isLoading;
     private decimal _progressPercent;
 
@@ -72,7 +68,7 @@ else
                 var path = Path.Combine(RetroPieSettings.Value.RomsPath, Name, file.Name);
 
                 await using FileStream writeStream = new(path, FileMode.Create);
-                await using var readStream = file.OpenReadStream(_maxFileSize);
+                await using var readStream = file.OpenReadStream(long.MaxValue);
                 var bytesRead = 0;
                 var totalRead = 0;
                 var buffer = new byte[1024 * 10];
@@ -99,4 +95,5 @@ else
 
         _isLoading = false;
     }
+
 }
