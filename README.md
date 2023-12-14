@@ -45,6 +45,7 @@ This is very much still a work in progress.
 - [ ] Support for sub directories
 - [ ] Support for Systems with multiple directories (Like Mame)
 - [ ] Support for moving/copying files
+- [ ] Simplify install
 
 ## Getting Started
 
