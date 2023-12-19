@@ -10,6 +10,7 @@ body {
 
 .main {
     height: calc(100dvh - 96px);
+    margin-top: 10px;
     color: var(--neutral-foreground-rest);
 }
 
