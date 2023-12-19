@@ -44,7 +44,7 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "retropiemanagerfluentui:dev",
+                "tag": "retropiemanager:dev",
                 "target": "base",
                 "dockerfile": "${workspaceFolder}/src/RetroPie.Manager.Web/Dockerfile",
                 "context": "${workspaceFolder}",
@@ -61,7 +61,7 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "retropiemanagerfluentui:latest",
+                "tag": "retropiemanager:latest",
                 "dockerfile": "${workspaceFolder}/src/RetroPie.Manager.Web/Dockerfile",
                 "context": "${workspaceFolder}",
                 "platform": {

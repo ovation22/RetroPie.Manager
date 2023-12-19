@@ -47,7 +47,7 @@ else
             <FluentCard Style="height: 100%">
                 <FluentIcon Value="@(Icon.FromImageUrl(_gamingSystem.Image))" Style="height: 81px; width: 125px;"/>
                 <br />
-                <FileUpload Name="@Name"></FileUpload>
+                <FileUpload FilePath="@_filePath"></FileUpload>
             </FluentCard>
         </FluentGridItem>
     </FluentGrid>
@@ -60,6 +60,7 @@ else
 
     private GamingSystem? _gamingSystem;
     private IQueryable<RomFile> _romFiles = default!;
+    private string _filePath = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -67,13 +68,13 @@ else
 
         _gamingSystem = await GamingSystemService.GetAsync(Name);
 
-        var directoryPath = Path.Join(RetroPieSettings.Value.RomsPath, _gamingSystem!.Path);
+        _filePath = Path.Join(RetroPieSettings.Value.RomsPath, _gamingSystem!.Path);
 
         var romFiles = new List<RomFile>();
 
-        if (Directory.Exists(directoryPath))
+        if (Directory.Exists(_filePath))
         {
-            var files = Directory.GetFiles(directoryPath);
+            var files = Directory.GetFiles(_filePath);
 
             foreach (var file in files)
             {
