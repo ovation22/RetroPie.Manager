@@ -1,7 +1,6 @@
 ﻿@using RetroPie.Manager.Web.Models.DTOs
 @using Microsoft.Extensions.Options
 @inject ILogger<FileUpload> Logger
-@inject IOptions<RetroPieManagerSettings> RetroPieSettings
 @rendermode InteractiveServer
 
 <p style="width: 100%;">
@@ -48,7 +47,7 @@ else
 @code {
 
     [Parameter]
-    public string Name { get; set; } = default!;
+    public string FilePath { get; set; } = default!;
 
     private List<IBrowserFile> _loadedFiles = new();
     private int _maxAllowedFiles = 4;
@@ -65,7 +64,7 @@ else
         {
             try
             {
-                var path = Path.Combine(RetroPieSettings.Value.RomsPath, Name, file.Name);
+                var path = Path.Combine(FilePath, file.Name);
 
                 await using FileStream writeStream = new(path, FileMode.Create);
                 await using var readStream = file.OpenReadStream(long.MaxValue);
