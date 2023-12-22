@@ -6,6 +6,8 @@
 @inject IOptions<RetroPieManagerSettings> RetroPieSettings
 @attribute [StreamRendering]
 
+@rendermode @(new InteractiveServerRenderMode(false))
+
 <PageTitle>@Name | RetroPie Manager</PageTitle>
 
 
@@ -34,7 +36,7 @@ else
     <FluentGrid>
         <FluentGridItem xs="12" sm="6">
             <FluentCard>
-                Files in directory <FluentBadge>@_romFiles.Count()</FluentBadge>
+                Files in directory <FluentBadge>@_romFiles?.Count()</FluentBadge>
 
                 <FluentDataGrid Items="@_romFiles" ResizableColumns=true>
                     <PropertyColumn Property="@(p => p.FileName)" Title="Name" />
@@ -47,7 +49,7 @@ else
             <FluentCard Style="height: 100%">
                 <FluentIcon Value="@(Icon.FromImageUrl(_gamingSystem.Image))" Style="height: 81px; width: 125px;"/>
                 <br />
-                <FileUpload FilePath="@_filePath"></FileUpload>
+                    <FileUpload FilePath="@_filePath" OnUploadCallback="@GetRomFiles"></FileUpload>
             </FluentCard>
         </FluentGridItem>
     </FluentGrid>
@@ -65,9 +67,12 @@ else
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(1);
-
         _gamingSystem = await GamingSystemService.GetAsync(Name);
+        GetRomFiles();
+    }
 
+    private void GetRomFiles()
+    {
         _filePath = Path.Join(RetroPieSettings.Value.RomsPath, _gamingSystem!.Path);
 
         var romFiles = new List<RomFile>();
