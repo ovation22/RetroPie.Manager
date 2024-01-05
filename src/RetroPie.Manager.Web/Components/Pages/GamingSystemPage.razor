@@ -39,9 +39,9 @@ else
                 Files in directory <FluentBadge>@_romFiles?.Count()</FluentBadge>
 
                 <FluentDataGrid Items="@_romFiles" ResizableColumns=true>
-                    <PropertyColumn Property="@(p => p.FileName)" Title="Name" />
-                    <PropertyColumn Property="@(p => p.FileSize)" Title="Size" />
-                    <PropertyColumn Property="@(p => p.CreationTime)" Title="Created" Format="yyyy-MM-dd HH:mm:ss" />
+                    <PropertyColumn Property="@(p => p.FileName)" Title="Name" Sortable="true" />
+                    <PropertyColumn Property="@(p => p.FileSize)" Title="Size" Sortable="true" />
+                    <PropertyColumn Property="@(p => p.CreationTime)" Title="Created" Format="yyyy-MM-dd HH:mm:ss" Sortable="true" />
                 </FluentDataGrid>
             </FluentCard>
         </FluentGridItem>
