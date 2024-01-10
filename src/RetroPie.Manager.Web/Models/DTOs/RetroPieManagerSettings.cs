@@ -6,4 +6,5 @@ public class RetroPieManagerSettings
     public string BiosPath { get; set; } = default!;
     public string ConfigsPath { get; set; } = default!;
     public string EmulationStationPath { get; set; } = default!;
+    public string? GameLogs { get; set; } = default!;
 }
