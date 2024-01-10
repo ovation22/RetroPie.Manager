@@ -4,6 +4,8 @@
 @inject IOptions<RetroPieManagerSettings> RetroPieSettings
 @attribute [StreamRendering]
 
+@rendermode @(new InteractiveServerRenderMode(false))
+
 <PageTitle>Logs | RetroPie Manager</PageTitle>
 
 <h1>Logs</h1>
@@ -26,10 +28,14 @@ else
             <FluentCard Style="height: 100%">
                 Log files:
                 <ul>
-                    @foreach (var file in _files)
+                    @if (_files != null)
                     {
-                        <li>@file</li>
+                        foreach (var file in _files)
+                        {
+                            <li><a href="javascript:;" @onclick="() => ReadFile(file)" @onclick:preventDefault>@file</a></li>
+                        }
                     }
+                    <li><a href="javascript:;" @onclick="() => ReadFile(_gameLog)" @onclick:preventDefault>@_gameLog</a></li>
                 </ul>
             </FluentCard>
         </FluentGridItem>
@@ -41,11 +47,13 @@ else
     private bool _isLoaded;
     private string[]? _files;
     private string? _fileContent;
+    private string? _gameLog;
 
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(1);
 
+        _gameLog = RetroPieSettings.Value.GameLogs;
         var directoryPath = RetroPieSettings.Value.EmulationStationPath;
         const string fileName = "es_log.txt";
         _fileContent = "";
@@ -59,12 +67,17 @@ else
             var fullPath = Path.Combine(directoryPath, fileName);
             if (_files.Contains(fullPath))
             {
-                await using var stream = new FileStream(fullPath, FileMode.Open);
-                using var reader = new StreamReader(stream);
-                _fileContent = await reader.ReadToEndAsync();
+                await ReadFile(fullPath);
             }
         }
 
         _isLoaded = true;
+    }
+
+    private async Task ReadFile(string fullPath)
+    {
+        await using var stream = new FileStream(fullPath, FileMode.Open);
+        using var reader = new StreamReader(stream);
+        _fileContent = await reader.ReadToEndAsync();
     }
 }
