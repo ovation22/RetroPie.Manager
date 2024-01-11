@@ -32,10 +32,17 @@ else
                     {
                         foreach (var file in _files)
                         {
-                            <li><a href="javascript:;" @onclick="() => ReadFile(file)" @onclick:preventDefault>@file</a></li>
+                            <li>
+                                <a href="javascript:;" @onclick="() => ReadFile(file)" @onclick:preventDefault>@file</a>
+                            </li>
                         }
                     }
-                    <li><a href="javascript:;" @onclick="() => ReadFile(_gameLog)" @onclick:preventDefault>@_gameLog</a></li>
+                    @if (_gameLog != null)
+                    {
+                        <li>
+                            <a href="javascript:;" @onclick="() => ReadFile(_gameLog)" @onclick:preventDefault>@_gameLog</a>
+                        </li>
+                    }
                 </ul>
             </FluentCard>
         </FluentGridItem>
