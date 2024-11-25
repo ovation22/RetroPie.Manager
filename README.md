@@ -5,6 +5,8 @@
 
 RetroPie Manager is a web-based interface for managing and configuring your RetroPie setup. This tool aims to simplify the management of games, controllers, and system settings for RetroPie users.
 
+Currently we're on .NET 9. If you're looking for .NET 8, it's [here](https://github.com/ovation22/RetroPie.Manager/tree/NET-8).
+
 This is very much still a work in progress.
 
 ## Screenshots
@@ -56,10 +58,10 @@ This is very much still a work in progress.
 
 ### Installation
 
-1. Install .NET 8
+1. Install .NET 9
 
 ```bash
-wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet8pi/main/install.sh | sudo bash
+wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet9pi/main/install.sh | sudo bash
 ```
 
 2. Install git
